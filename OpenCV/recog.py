@@ -21,7 +21,24 @@ def collect_dataset():
 
 images, labels, labels_dic = collect_dataset()
 
-rec_eig = cv2.face.createEigenFaceRecognizer()
+rec_eig = cv2.createEigenFaceRecognizer()
 rec_eig.train(images, labels)
 
+rec_fisher = cv2.createFisherFaceRecognizer()
+rec_fisher.train(images, labels)
+
+rec_lbph = cv2.createLBPHFaceRecognizer()
+rec_lbph.train(images, labels)
+
 print("Trained Successfully!")
+
+face = cv2.imread("7.jpg", cv2.COLOR_BGR2GRAY)
+
+pred, conf = rec_eig.predict(face)
+print("Eigen Prediction-->" + labels_dic[pred].capitalize() + "\tConfidence-->" + str(conf) + "\n")
+
+pred, conf = rec_fisher.predict(face)
+print("Fisher Prediction-->" + labels_dic[pred].capitalize() + "\tConfidence-->" + str(conf) + "\n")
+
+pred, conf = rec_lbph.predict(face)
+print("LBPH Prediction-->" + labels_dic[pred].capitalize() + "\tConfidence-->" + str(conf) + "\n")

@@ -1,4 +1,5 @@
 import os
+import timeit
 import numpy as np 
 import math
 import time
@@ -20,6 +21,7 @@ def resize(images, size = (100,100)):
 
 	return images_norm
 
+#Crops the face, so that 70% of the face is captured all the time
 def cut_faces(frame, face_coord):
 	faces = []
 
@@ -30,6 +32,10 @@ def cut_faces(frame, face_coord):
 	return faces
 
 
+""" This is the main function that uses the Haar Cascade detector to detect 
+	the faces and draw a rectangle aroung the edges of the face and return it
+	to the main function
+"""
 def drawRect(frame, detector):
 	biggest = True
 	scale_factor = 1.2
@@ -61,7 +67,7 @@ folder = "People/" + raw_input('Enter the Persons Name: ').lower()
 #capture the video and create windows
 webcam = cv2.VideoCapture(0)
 cv2.namedWindow("Live Feed", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("Live  Feed", 800, 400)
+cv2.resizeWindow("Live  Feed", 900, 500)
 
 #Saving the video recording
 fourcc = cv2.cv.CV_FOURCC(*'XVID')
@@ -76,14 +82,14 @@ if not os.path.exists(folder):
 	os.mkdir(folder)
 	timer = 0
 	counter = 0
-	while counter < 30:
+	while counter < 400:
 		#reading the frame and saving the video
 		ret, frame = webcam.read()
 		video.write(frame)
 
 		#obtaining the face coordinates using the function and start the loop to save images
 		face_cord = drawRect(frame, detector)
-		if len(face_cord) and timer % 400 == 50:
+		if len(face_cord):
 			#crop the images respectively acc to the face coords
 			cut_img = cut_faces(frame, face_cord)
 
@@ -92,7 +98,6 @@ if not os.path.exists(folder):
 
 			#Normalizing the frame
 			norm_face = cv2.equalizeHist(gray)
-
 			print("Image " + str(counter) + " stored")
 			counter = counter + 1
 
@@ -102,7 +107,7 @@ if not os.path.exists(folder):
 			cv2.imwrite(folder + '/' + str(counter) + '.jpg', resized_face)
 
 		font = cv2.FONT_HERSHEY_SIMPLEX
-		cv2.putText(frame, 'Press \'q\' to exit', (10,20), font, 0.5, (0,0,0), 1, cv2.CV_AA)
+		cv2.putText(frame, 'Capturing', (10,20), font, 0.5, (0,0,0), 1, cv2.CV_AA)
 		cv2.imshow("Live Feed", frame)
 		cv2.waitKey(50)
 		timer += 50
