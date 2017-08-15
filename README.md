@@ -28,4 +28,7 @@ The training code is:
 rec_lbph = cv2.createLBPHFaceRecognizer()
 rec_lbph.train(images, labels)
 ```
-This trains the images using a *LBPH* (Linear Binary Pattern Histogram) model and checks if the images are recognizable under a set threshold of 70. It also predicts the confidence and labels the image recognized accordingly.
+This trains the images using a **LBPH** (Linear Binary Pattern Histogram) model and checks if the images are recognizable under a set threshold of 70. It also predicts the confidence and labels the image recognized accordingly.
+
+The final results are somewhat like this (this is a picture of me and my mom, which I have pre-trained to but the other picture i haven't).
+<img width="1440" alt="screen shot 2017-08-14 at 9 11 16 pm" src="https://user-images.githubusercontent.com/12717969/29313786-0334eaee-81d9-11e7-97cc-311cbf65367e.png">
