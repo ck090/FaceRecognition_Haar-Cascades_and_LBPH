@@ -17,4 +17,4 @@ Use pip to install any missing dependencies
 # Usage
 There are two files namely `Pydata1.py` and `Pydata2.py`, which are two main python codes needed to run the system.
 
-The `Pydata1.py` contains the code for **Building the dataset for our image recognition model**. It captures 400 Images of the person who needs to be recognised. This images are stored in the [People](../OpenCV/People) Folder in the OpenCV Folder.
+The `Pydata1.py` contains the code for **Building the dataset for our image recognition model**. It captures 400 Images of the person who needs to be recognised. This images are stored in the [People](/OpenCV/People) Folder in the OpenCV Folder.
