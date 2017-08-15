@@ -18,3 +18,14 @@ Use pip to install any missing dependencies
 There are two files namely `Pydata1.py` and `Pydata2.py`, which are two main python codes needed to run the system.
 
 The `Pydata1.py` contains the code for **Building the dataset for our image recognition model**. It captures 400 Images of the person who needs to be recognised. This images are stored in the [People](/OpenCV/People) Folder in the OpenCV Folder.
+
+After running the `Pydata1.py` in the terminal, all the images are saved and we are now ready to run the other file `Pydata2.py`.
+
+This is the main face recognition code, which can be used to recognize the pre-trained images or flag as unknown if the image is not recognized.
+
+The training code is:
+```python
+rec_lbph = cv2.createLBPHFaceRecognizer()
+rec_lbph.train(images, labels)
+```
+This trains the images using a *LBPH* (Linear Binary Pattern Histogram) model and checks if the images are recognizable under a set threshold of 70. It also predicts the confidence and labels the image recognized accordingly.
