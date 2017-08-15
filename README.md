@@ -15,4 +15,6 @@ The pdf files in this repo are some of the earliest and the fundamental papers o
 Use pip to install any missing dependencies
 
 # Usage
-There are two files namely 'Pydata1.py' 
+There are two files namely `Pydata1.py` and `Pydata2.py`, which are two main python codes needed to run the system.
+
+The `Pydata1.py` contains the code for **Building the dataset for our image recognition model**. It captures 400 Images of the person who needs to be recognised. This images are stored in the [People] Folder in the OpenCV Folder. (../OpenCV/People)
