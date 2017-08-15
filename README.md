@@ -11,6 +11,6 @@ The dependencies are:
 * os
 * pyttsx (For TexttoSpeech)
 
-The folder Opencv contains the complete files that is related to compiling and running the Face Recognition System.
+## The folder *OpenCV* contains the complete files that is related to compiling and running the Face Recognition System.
 
 There are 
