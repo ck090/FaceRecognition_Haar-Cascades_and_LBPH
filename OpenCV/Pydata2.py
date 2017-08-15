@@ -152,8 +152,8 @@ while True:
 			for i, face in enumerate(faces):
 				pred, conf = rec_lbph.predict(face)
 				pred_name = labels_dic[pred].capitalize()
-				threshold = 55
-				#print("Prediction-->" + pred_name + "\tConfidence-->" + str(conf) + "\n")
+				threshold = 60
+				print("Prediction-->" + pred_name + "\tConfidence-->" + str(conf) + "\n")
 				if conf < threshold:
 					cv2.putText(frame, pred_name, 
 						(face_cord[i][0], face_cord[i][1] - 30), 
